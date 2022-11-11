@@ -1,10 +1,12 @@
 package com.example.jogodavelha
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import java.nio.channels.spi.AbstractSelectionKey
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +29,26 @@ class MainActivity : AppCompatActivity() {
             R.id.button8 -> cellID=8
             R.id.button9 -> cellID=9
         }
+        //Toast.makeText(this,"ID:"+cellID, Toast.LENGTH_SHORT).show()
+        playGame(cellID, btSelecionado)
+    }
+    var player1 = ArrayList<Int>()
+    var player2 = ArrayList<Int>()
 
-        Toast.makeText(this,"ID:"+cellID, Toast.LENGTH_SHORT).show()
+    var activePlayer=1
+    fun playGame(cellID:Int, btSelecionado:Button){
 
+        if (activePlayer == 1){
+            btSelecionado.text="X"
+            btSelecionado.setBackgroundColor(Color.BLUE)
+            player1.add(cellID)
+            activePlayer = 2
+        }else{
+            btSelecionado.text = "O"
+            btSelecionado.setBackgroundColor(Color.GREEN)
+            player2.add(cellID)
+            activePlayer = 1
+        }
+        btSelecionado.isEnabled = false
     }
 }
