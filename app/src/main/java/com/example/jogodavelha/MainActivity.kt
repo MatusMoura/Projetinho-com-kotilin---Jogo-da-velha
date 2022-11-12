@@ -50,5 +50,79 @@ class MainActivity : AppCompatActivity() {
             activePlayer = 1
         }
         btSelecionado.isEnabled = false
+        checkWiner()
+    }
+
+    fun checkWiner(){
+        var winer = -1
+
+        //Vitorias do Player1 X
+        //Linhas
+        if (player1.contains(1) && player1.contains(2) && player1.contains(3)){
+            winer = 1
+        }
+        if (player1.contains(4) && player1.contains(5) && player1.contains(6)){
+            winer = 1
+        }
+        if (player1.contains(7) && player1.contains(8) && player1.contains(9)){
+            winer = 1
+        }
+        //COLUNAS
+        if (player1.contains(1) && player1.contains(4) && player1.contains(7)){
+            winer = 1
+        }
+        if (player1.contains(2) && player1.contains(5) && player1.contains(8)){
+            winer = 1
+        }
+        if (player1.contains(3) && player1.contains(6) && player1.contains(9)){
+            winer = 1
+        }
+        //DIAGONAIS
+        if (player1.contains(1) && player1.contains(5) && player1.contains(9)){
+            winer = 1
+        }
+        if (player1.contains(3) && player1.contains(5) && player1.contains(7)){
+            winer = 1
+        }
+
+        //Vitorias do Player2 O
+        //LINHAS
+        if (player2.contains(1) && player1.contains(2) && player1.contains(3)){
+            winer = 2
+        }
+        if (player2.contains(4) && player1.contains(5) && player1.contains(6)){
+            winer = 2
+        }
+        if (player2.contains(7) && player1.contains(8) && player1.contains(9)){
+            winer = 2
+        }
+        //COLUNAS
+        if (player2.contains(1) && player1.contains(4) && player1.contains(7)){
+            winer = 2
+        }
+        if (player2.contains(2) && player1.contains(5) && player1.contains(8)){
+            winer = 2
+        }
+        if (player2.contains(3) && player1.contains(6) && player1.contains(9)){
+            winer = 2
+        }
+        //DIAGONAIS
+        if (player2.contains(1) && player1.contains(5) && player1.contains(9)){
+            winer = 2
+        }
+        if (player2.contains(3) && player1.contains(5) && player1.contains(7)){
+            winer = 2
+        }
+
+        //Vitoria
+        if(winer!=-1){
+            if (winer == 1){
+                Toast.makeText(this, "Player 1 ganhou o jogo!",Toast.LENGTH_SHORT).show()
+            }else if (winer == 2) {
+                Toast.makeText(this, "Player 2 ganhou o jogo!",Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Deu velha!",Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
